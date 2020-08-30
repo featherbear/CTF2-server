@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Generate Slate documentation
+jobs:
+  generate-docs:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generate documentation files
+      run: |
+        npm install
+        mkdir docs-build -p
+        npx featherbear/fastify-slate ./docs-build/build.md ./routes
+
+    - name: Build documentation
+      uses: featherbear/slate-builder-action@master
+      env:
+        DOC_BASE_FOLDER: ./docs-build/
+        TEMPLATE_REPO: featherbear/CTF2-server-slate
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.3.1
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./docs-build/build
