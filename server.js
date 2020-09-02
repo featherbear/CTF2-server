@@ -5,6 +5,9 @@ require('dotenv').config()
 
 const app = fastify()
 app.register(fastifyHelmet)
+app.register(require('fastify-jwt'), {
+  secret: process.env.CTF2_SECRET || require('crypto').randomBytes(30).toString('hex')
+})
 app.register(require('./routes'))
 
 const { PORT, HOST } = process.env
