@@ -310,6 +310,28 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#auth" class="toc-h1 toc-link" data-title="auth">auth</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="login">login</a>
+                  </li>
+                  <li>
+                    <a href="#register" class="toc-h2 toc-link" data-title="register">register</a>
+                  </li>
+                  <li>
+                    <a href="#usernameavailable" class="toc-h2 toc-link" data-title="usernameAvailable">usernameAvailable</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#score" class="toc-h1 toc-link" data-title="score">score</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#top" class="toc-h2 toc-link" data-title="top">top</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#hello" class="toc-h1 toc-link" data-title="hello">hello</a>
           </li>
           <li>
@@ -335,6 +357,26 @@
 </ul>
 
 <hr>
+<h1 id='auth'>auth</h1><h2 id='login'>login</h2>
+<p><code>POST: /auth/login</code></p>
+
+<p>Authenticates a user</p>
+<h2 id='register'>register</h2>
+<p><code>POST: /auth/register</code></p>
+
+<p>Registers a new user</p>
+<h2 id='usernameavailable'>usernameAvailable</h2>
+<p><code>POST: /auth/usernameAvailable</code></p>
+
+<p>Check if a username is available</p>
+<h1 id='score'>score</h1><h2 id='top'>top</h2>
+<p><code>GET: /score/top</code></p>
+
+<p>Get the top 10 players/teams</p>
+<h3 id='n'>:n</h3>
+<p><code>GET: /score/top/:n</code></p>
+
+<p>Get the top <code>n</code> players/teams</p>
 <h1 id='hello'>hello</h1>
 <p><code>GET: /hello</code></p>
 
