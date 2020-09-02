@@ -21,6 +21,7 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "better-sqlite3": "^7.1.0",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
