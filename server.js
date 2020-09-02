@@ -12,5 +12,3 @@ app.listen(PORT || 8000, HOST || '0.0.0.0').then(function (a) {
   const { address: HOST, port: PORT } = app.server.address()
   console.info(`Project CTF² server listening on ${HOST}:${PORT}`)
 })
-
-console.log(app.stack)
