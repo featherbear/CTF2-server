@@ -21,10 +21,13 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "better-sqlite3": "^7.1.0",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "fastify": "^3.3.0",
     "fastify-helmet": "^5.0.1",
-    "fastify-plugin": "^2.3.3"
+    "fastify-jwt": "^2.1.3",
+    "fastify-plugin": "^2.3.3",
+    "mongoose": "^5.10.2"
   }
 }
