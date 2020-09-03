@@ -60,7 +60,7 @@ export default function (app, opts, done) {
     },
     async (req, res) => {
       return res.OK({
-        name: req.User.name,
+        name: await req.User.getName(),
         username: req.User.username
       })
     }
