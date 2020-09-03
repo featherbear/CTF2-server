@@ -10,7 +10,6 @@ export default function (app, opts, done) {
       }
     },
     async () => {
-
       // const result = await BCrypt.compare(password, hash)
     }
   )
@@ -33,6 +32,42 @@ export default function (app, opts, done) {
     }
   )
 
+  app.get(
+    '/me',
+    {
+      schema: {
+        description: 'Get user details'
+      }
+    },
+    async (req, res) => {
+      // FIXME: Get user data from prehandler
+      return ':)'
+    }
+  )
+
+  app.put(
+    '/me',
+    {
+      schema: {
+        description: 'Update user details'
+      }
+    },
+    async (req, res) => {
+      const { name, password } = req.body
+
+      // TODO: Transact
+
+      // FIXME: Get user data from prehandler
+
+      if (name) {
+        // ...
+      }
+
+      if (password) {
+        // ... .changePassword(password)
+      }
+    }
+  )
   app.post(
     '/usernameAvailable',
     {
