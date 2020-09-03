@@ -8,13 +8,15 @@ require('dotenv').config()
 const app = fastify()
 app.register(fastifyHelmet)
 
-const { CTF2_DATABASE } = process.env
+{
+  const { CTF2_DATABASE } = process.env
 
-if (!CTF2_DATABASE) {
-  console.warn('CTF2_DATABASE variable not set! Defaulting to game.db')
-  app.decorate('db', initDatabase('game.db'))
-} else {
-  app.decorate('db', initDatabase(CTF2_DATABASE))
+  if (!CTF2_DATABASE) {
+    console.warn('CTF2_DATABASE variable not set!\n  Using default database: game.db')
+    app.decorate('db', initDatabase('game.db'))
+  } else {
+    app.decorate('db', initDatabase(CTF2_DATABASE))
+  }
 }
 
 {
