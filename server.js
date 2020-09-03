@@ -17,9 +17,19 @@ if (!CTF2_DATABASE) {
   app.decorate('db', initDatabase(CTF2_DATABASE))
 }
 
-app.register(require('fastify-jwt'), {
-  secret: process.env.CTF2_SECRET || require('crypto').randomBytes(30).toString('hex')
-})
+{
+  let { CTF2_SECRET } = process.env
+
+  if (!CTF2_SECRET) {
+    CTF2_SECRET = require('crypto').randomBytes(30).toString('hex')
+    console.warn('CTF2_SECRET variable not set!\n  Using generated secret: ' + CTF2_SECRET)
+  }
+
+  app.register(require('./lib/jwt'), {
+    secret: CTF2_SECRET
+  })
+}
+
 app.register(require('./routes'))
 
 const { PORT, HOST } = process.env
