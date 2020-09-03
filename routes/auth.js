@@ -1,5 +1,5 @@
 // Authentication related routes
-import BCrypt from 'bcrypt'
+import User from '../lib/models/User'
 
 export default function (app, opts, done) {
   app.post(
@@ -10,6 +10,7 @@ export default function (app, opts, done) {
       }
     },
     async () => {
+
       // const result = await BCrypt.compare(password, hash)
     }
   )
@@ -21,8 +22,14 @@ export default function (app, opts, done) {
         description: 'Registers a new user'
       }
     },
-    async () => {
-      // const hash = await BCrypt.hash('123456', 10)
+    async (req, res) => {
+      const { username, name, password } = req.body
+      if (!username || !password) {
+        return res.FAIL('Username or password not supplied', 400)
+      }
+
+      const user = await User.create(username, password, name)
+      res.OK(user)
     }
   )
 
