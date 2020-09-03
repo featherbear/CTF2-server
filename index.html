@@ -367,14 +367,75 @@
 <p><code>POST: /auth/login</code></p>
 
 <p>Authenticates a user</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>type</code></td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>properties</code></td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+</tbody></table>
 <h2 id='auth-register'>register</h2>
 <p><code>POST: /auth/register</code></p>
 
 <p>Registers a new user</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>type</code></td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>properties</code></td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+</tbody></table>
 <h2 id='auth-me'>me</h2>
 <p><code>GET: /auth/me</code></p>
 
 <p>Get user details</p>
+
+<p><code>PUT: /auth/me</code></p>
+
+<p>Update user details</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>name</code></td>
+<td style="text-align: center">string</td>
+<td style="text-align: left">(optional) New display name</td>
+</tr>
+<tr>
+<td style="text-align: center"><code>password</code></td>
+<td style="text-align: center">string</td>
+<td style="text-align: left">(optional) New password</td>
+</tr>
+</tbody></table>
 <h2 id='auth-usernameavailable'>usernameAvailable</h2>
 <p><code>POST: /auth/usernameAvailable</code></p>
 
