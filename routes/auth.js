@@ -1,5 +1,6 @@
 // Authentication related routes
 import User from '../lib/models/User'
+import { database } from '../lib/db'
 
 export default function (app, opts, done) {
   app.post(
@@ -35,6 +36,7 @@ export default function (app, opts, done) {
   app.get(
     '/me',
     {
+      preValidation: [app.authenticate],
       schema: {
         description: 'Get user details'
       }
@@ -45,37 +47,68 @@ export default function (app, opts, done) {
     }
   )
 
-  app.put(
-    '/me',
-    {
-      schema: {
-        description: 'Update user details'
-      }
-    },
-    async (req, res) => {
-      const { name, password } = req.body
+  // app.put(
+  //   '/me',
+  //   {
+  //     preValidation: [app.authenticate],
+  //     schema: {
+  //       description: 'Update user details',
+  //       body: {}
+  //     }
+  //   },
+  //   async (req, res) => {
+  //     const { name, password } = req.body
 
-      // TODO: Transact
+  //     // TODO: Transact
 
-      // FIXME: Get user data from prehandler
+  //     // FIXME: Get user data from prehandler
 
-      if (name) {
-        // ...
-      }
+  //     if (name) {
+  //       // ...
+  //     }
 
-      if (password) {
-        // ... .changePassword(password)
-      }
-    }
-  )
+  //     if (password) {
+  //       // ... .changePassword(password)
+  //     }
+  //   }
+  // )
+
   app.post(
     '/usernameAvailable',
     {
       schema: {
-        description: 'Check if a username is available'
+        description: 'Check if a username is available',
+        body: {
+          username: { type: 'string', description: 'Username to check' }
+        }
       }
     },
-    () => {}
+    async (req, res) => {
+      const { username } = req.body
+      if (!username) {
+        return res.FAIL('No username supplied')
+      }
+      return res.OK(database.usernameAvailable(username))
+    }
+  )
+
+  app.post(
+    '/nameAvailable',
+    {
+      schema: {
+        description: 'Check if a name is available',
+        body: {
+          name: { type: 'string', description: 'Name to check' }
+        }
+      }
+    },
+    async (req, res) => {
+      const { name } = req.body
+      if (!name) {
+        return res.FAIL('No name supplied')
+      }
+      return res.OK(database.nameAvailable(name))
+    }
   )
 
   done()
