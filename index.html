@@ -324,6 +324,9 @@
                   <li>
                     <a href="#usernameavailable" class="toc-h2 toc-link" data-title="usernameAvailable">usernameAvailable</a>
                   </li>
+                  <li>
+                    <a href="#nameavailable" class="toc-h2 toc-link" data-title="nameAvailable">nameAvailable</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -369,13 +372,45 @@
 
 <p>Registers a new user</p>
 <h2 id='me'>me</h2>
-<p><code>PUT: /auth/me</code></p>
+<p><code>GET: /auth/me</code></p>
 
-<p>Update user details</p>
+<p>Get user details</p>
 <h2 id='usernameavailable'>usernameAvailable</h2>
 <p><code>POST: /auth/usernameAvailable</code></p>
 
 <p>Check if a username is available</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>username</code></td>
+<td style="text-align: center">string</td>
+<td style="text-align: left">Username to check</td>
+</tr>
+</tbody></table>
+<h2 id='nameavailable'>nameAvailable</h2>
+<p><code>POST: /auth/nameAvailable</code></p>
+
+<p>Check if a name is available</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><code>name</code></td>
+<td style="text-align: center">string</td>
+<td style="text-align: left">Name to check</td>
+</tr>
+</tbody></table>
 <h1 id='score'>score</h1><h2 id='top'>top</h2>
 <p><code>GET: /score/top</code></p>
 
