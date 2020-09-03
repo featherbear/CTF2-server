@@ -2,12 +2,19 @@ export default function (app, opts, done) {
   const { CTF2_GAME_URL } = process.env
 
   app.decorateReply('OK', function (data) {
-    this.send({ result: true, data })
+    const response = { result: true }
+    if (typeof data !== 'undefined') response.data = data
+    this.send(response)
   })
+
   app.decorateReply('FAIL', function (data, code) {
+    const response = { result: false }
+    if (typeof data !== 'undefined') response.data = data
+
     if (typeof code !== 'undefined') this.code(code)
-    this.send({ result: false, data })
+    this.send(response)
   })
+
   app.setErrorHandler(function (error, req, res) {
     res.FAIL(error.message)
   })
