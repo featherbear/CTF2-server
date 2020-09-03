@@ -66,31 +66,36 @@ export default function (app, opts, done) {
     }
   )
 
-  // app.put(
-  //   '/me',
-  //   {
-  //     preValidation: [app.authenticate],
-  //     schema: {
-  //       description: 'Update user details',
-  //       body: {}
-  //     }
-  //   },
-  //   async (req, res) => {
-  //     const { name, password } = req.body
+  app.put(
+    '/me',
+    {
+      preValidation: [app.authenticate],
+      schema: {
+        description: 'Update user details',
+        body: {
+          name: { type: 'string', description: '(optional) New display name' },
+          password: { type: 'string', description: '(optional) New password' }
+        }
+      }
+    },
+    async (req, res) => {
+      const { name, password } = req.body
 
-  //     // TODO: Transact
+      if (!name && !password) {
+        return res.FAIL('At least one of [name, password] is required')
+      }
 
-  //     // FIXME: Get user data from prehandler
+      if (name) {
+        await req.User.changeName(name)
+      }
 
-  //     if (name) {
-  //       // ...
-  //     }
+      if (password) {
+        await req.User.changePassword(password)
+      }
 
-  //     if (password) {
-  //       // ... .changePassword(password)
-  //     }
-  //   }
-  // )
+      return res.OK()
+    }
+  )
 
   app.post(
     '/usernameAvailable',
