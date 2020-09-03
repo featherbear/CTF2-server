@@ -7,11 +7,23 @@ export default function (app, opts, done) {
     '/login',
     {
       schema: {
-        description: 'Authenticates a user'
+        description: 'Authenticates a user',
+        body: {
+          username: { type: 'string', description: 'Username' },
+          password: { type: 'string', description: 'Password' }
+        }
       }
     },
-    async () => {
-      // const result = await BCrypt.compare(password, hash)
+    async (req, res) => {
+      const { username, password } = req.body
+      if (!username || !password) {
+        return res.FAIL('Incorrect username / password')
+      }
+
+      const user = await User.login(username, password)
+      if (!user) return res.FAIL('Incorrect username / password')
+
+      return res.OK(user.getJWT())
     }
   )
 
@@ -19,7 +31,12 @@ export default function (app, opts, done) {
     '/register',
     {
       schema: {
-        description: 'Registers a new user'
+        description: 'Registers a new user',
+        body: {
+          name: { type: 'string', description: 'Display name' },
+          username: { type: 'string', description: 'Username' },
+          password: { type: 'string', description: 'Password' }
+        }
       }
     },
     async (req, res) => {
@@ -29,7 +46,7 @@ export default function (app, opts, done) {
       }
 
       const user = await User.create(username, password, name)
-      res.OK(user)
+      res.OK(user.getJWT())
     }
   )
 
@@ -42,8 +59,10 @@ export default function (app, opts, done) {
       }
     },
     async (req, res) => {
-      // FIXME: Get user data from prehandler
-      return ':)'
+      return res.OK({
+        name: req.User.name,
+        username: req.User.username
+      })
     }
   )
 
