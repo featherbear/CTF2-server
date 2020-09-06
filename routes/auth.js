@@ -1,6 +1,5 @@
 // Authentication related routes
 import User from '../lib/models/User'
-import { database } from '../lib/db'
 
 export default function (app, opts, done) {
   app.post(
@@ -112,7 +111,7 @@ export default function (app, opts, done) {
       if (!username) {
         return res.FAIL('No username supplied')
       }
-      return res.OK(database.usernameAvailable(username))
+      return res.OK(await User.usernameAvailable(username))
     }
   )
 
@@ -131,7 +130,7 @@ export default function (app, opts, done) {
       if (!name) {
         return res.FAIL('No name supplied')
       }
-      return res.OK(database.nameAvailable(name))
+      return res.OK(await User.nameAvailable(name))
     }
   )
 
