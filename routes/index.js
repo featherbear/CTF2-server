@@ -20,6 +20,7 @@ export default function (app, opts, done) {
   })
 
   app.register(require('./auth'), { prefix: '/auth' })
+  app.register(require('./ctf'), { prefix: '/ctf' })
   app.register(require('./score'), { prefix: '/score' })
 
   app.get('/', { hide: true }, (req, res) => {
