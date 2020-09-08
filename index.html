@@ -333,7 +333,10 @@
             <a href="#ctf" class="toc-h1 toc-link" data-title="ctf">ctf</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#ctf-categories" class="toc-h2 toc-link" data-title="categories">categories</a>
+                    <a href="#ctf-category" class="toc-h2 toc-link" data-title="category">category</a>
+                  </li>
+                  <li>
+                    <a href="#ctf-question" class="toc-h2 toc-link" data-title="question">question</a>
                   </li>
               </ul>
           </li>
@@ -427,9 +430,15 @@
 
 <p>Get user details</p>
 
+<p>Requirements
+- User must be logged in</p>
+
 <p><code>PUT: /auth/me</code></p>
 
 <p>Update user details</p>
+
+<p>Requirements
+- User must be logged in</p>
 
 <table><thead>
 <tr>
@@ -441,12 +450,12 @@
 <tr>
 <td style="text-align: left"><strong>name</strong></td>
 <td style="text-align: left"><code>string</code></td>
-<td style="text-align: left">(optional) New display name</td>
+<td style="text-align: left">New display name</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>password</strong></td>
 <td style="text-align: left"><code>string</code></td>
-<td style="text-align: left">(optional) New password</td>
+<td style="text-align: left">New password</td>
 </tr>
 </tbody></table>
 <h2 id='auth-usernameavailable'>usernameAvailable</h2>
@@ -485,14 +494,21 @@
 <td style="text-align: left">Name to check</td>
 </tr>
 </tbody></table>
-<h1 id='ctf'>ctf</h1><h2 id='ctf-categories'>categories</h2>
-<p><code>GET: /ctf/categories</code></p>
+<h1 id='ctf'>ctf</h1><h2 id='ctf-category'>category</h2>
+<p><code>GET: /ctf/category</code></p>
 
 <p>Get categories</p>
 
-<p><code>POST: /ctf/categories</code></p>
+<p>Requirements
+- User must be logged in</p>
+
+<p><code>POST: /ctf/category</code></p>
 
 <p>Create a category</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
 
 <table><thead>
 <tr>
@@ -507,6 +523,201 @@
 <td style="text-align: left">Category</td>
 </tr>
 </tbody></table>
+
+<p><code>DELETE: /ctf/category</code></p>
+
+<p>Delete a category</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+
+<p><code>PUT: /ctf/category</code></p>
+
+<p>Rename a category</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Category ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>name</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Category Name</td>
+</tr>
+</tbody></table>
+<h2 id='ctf-question'>question</h2>
+<p><code>GET: /ctf/question</code></p>
+
+<p>Get questions</p>
+
+<p>Requirements
+- User must be logged in</p>
+
+<p><code>POST: /ctf/question</code></p>
+
+<p>Create a question</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>title</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Title</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>description</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Description</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>category</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Category ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>flag</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Flag</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>value</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Value</td>
+</tr>
+</tbody></table>
+
+<p><code>PUT: /ctf/question</code></p>
+
+<p>Update a question</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Question ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>title</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Title</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>description</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Description</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>category</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Category ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>flag</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Flag</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>value</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Value</td>
+</tr>
+</tbody></table>
+
+<p><code>DELETE: /ctf/question</code></p>
+
+<p>Delete a question</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+<h3 id='ctf-question-getflag'>getFlag</h3>
+<p><code>POST: /ctf/question/getFlag</code></p>
+
+<p>Get a question flag</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Question ID</td>
+</tr>
+</tbody></table>
+<h3 id='ctf-question-solve'>solve</h3>
+<p><code>POST: /ctf/question/solve</code></p>
+
+<p>Solve a question</p>
+
+<p>Requirements
+- User must be logged in</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Question ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>flag</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Flag</td>
+</tr>
+</tbody></table>
+
+<p><code>DELETE: /ctf/question/solve</code></p>
+
+<p>Unsolve a question</p>
+
+<p>Requirements
+- User must be logged in
+- User must be an admin</p>
 <h1 id='score'>score</h1><h2 id='score-top'>top</h2>
 <p><code>GET: /score/top</code></p>
 
