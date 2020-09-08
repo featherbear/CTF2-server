@@ -72,9 +72,16 @@ export default function (app, opts, done) {
       schema: {
         description: 'Update user details',
         body: {
-          name: { type: 'string', description: '(optional) New display name' },
-          password: { type: 'string', description: '(optional) New password' }
-        }
+          type: 'object',
+          properties: {
+            name: { type: 'string', description: 'New display name' },
+            password: { type: 'string', description: 'New password' }
+          }
+        },
+        anyOf: [
+          { required: ['name'] },
+          { required: ['password'] }
+        ]
       }
     },
     async (req, res) => {
