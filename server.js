@@ -27,7 +27,7 @@ app.register(fastifyHelmet)
     console.warn('CTF2_SECRET variable not set!\n  Using generated secret: ' + CTF2_SECRET)
   }
 
-  app.register(require('./lib/jwt'), {
+  app.register(require('./lib/auth'), {
     secret: CTF2_SECRET
   })
 }
