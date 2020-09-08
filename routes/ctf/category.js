@@ -31,7 +31,7 @@ export default function (app, opts, done) {
       try {
         return res.OK(await Category.create(name))
       } catch (e) {
-        return res.FAIL(e)
+        return res.FAIL(e.message)
       }
     }
   )
