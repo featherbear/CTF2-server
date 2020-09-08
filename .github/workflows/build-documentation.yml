@@ -13,7 +13,7 @@ jobs:
       run: |
         npm install
         mkdir docs-build -p
-        npx featherbear/fastify-slate ./docs-build/build.md ./routes
+        npx featherbear/fastify-slate ./docs-build/build.md ./lib/auth /routes
 
     - name: Build documentation
       uses: featherbear/slate-builder-action@master
