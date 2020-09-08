@@ -129,6 +129,59 @@ export default function (app, opts, done) {
       }
     }
   )
-  
+
+  app.post(
+    '/solve',
+    {
+      preValidation: [app.authenticate],
+      schema: {
+        description: 'Solve a question',
+        body: {
+          id: { type: 'integer', description: 'Question ID' },
+          flag: { type: 'string', description: 'Flag' }
+        }
+      }
+    },
+    async (req, res) => {
+      const { id, flag } = req.body
+
+      try {
+        const question = await Question.getQuestion(id)
+        if (flag === await question.getFlag()) {
+          try {
+            await question.solve(req.User.username)
+          } catch {
+            return res.FAIL('Question already solved')
+          }
+
+          return res.OK()
+        }
+      } catch {
+      }
+      return res.FAIL()
+    }
+  )
+
+  app.delete(
+    '/solve',
+    {
+      preValidation: [app.authenticate, app.authorise],
+      schema: {
+        description: 'Unsolve a question',
+        body: {
+          questionId: { type: 'integer', description: 'Question ID' },
+          userId: { type: 'integer', description: 'User ID' }
+        }
+      }
+    },
+    async (req, res) => {
+      const { questionId, userId } = req.body
+
+      const question = await Question.getQuestion(questionId)
+      const { changes } = await question.unsolve(userId)
+      return changes ? res.OK() : res.FAIL()
+    }
+  )
+
   done()
 }
