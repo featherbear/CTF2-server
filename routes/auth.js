@@ -87,10 +87,6 @@ export default function (app, opts, done) {
     async (req, res) => {
       const { name, password } = req.body
 
-      if (!name && !password) {
-        return res.FAIL('At least one of [name, password] is required')
-      }
-
       if (name) {
         await req.User.changeName(name)
       }
@@ -160,6 +156,18 @@ export default function (app, opts, done) {
       await User.delete(username)
       return res.OK()
     }
+  )
+
+  app.get(
+    '/all',
+    {
+      preValidation: [app.authenticate],
+      schema: {
+        description: 'Gets all user data'
+      }
+    },
+    async (req, res) => res.OK(await User.getUsers())
+
   )
 
   done()
