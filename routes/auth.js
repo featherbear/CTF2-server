@@ -161,7 +161,7 @@ export default function (app, opts, done) {
   app.get(
     '/all',
     {
-      preValidation: [app.authenticate],
+      preValidation: [app.authenticate, app.authorise],
       schema: {
         description: 'Gets all user data'
       }
