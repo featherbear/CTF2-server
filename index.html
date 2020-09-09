@@ -377,8 +377,18 @@
 </ul>
 
 <hr>
-<h1 id='auth'>auth</h1><h2 id='auth-login'>login</h2>
-<p><code>POST: /auth/login</code></p>
+<h1 id='auth'>auth</h1>
+<p><code>DELETE /auth</code></p>
+
+<p>Delete a user</p>
+
+<p><strong>Requirements</strong></p>
+
+<ul>
+<li>User must be logged in</li>
+</ul>
+<h2 id='auth-login'>login</h2>
+<p><code>POST /auth/login</code></p>
 
 <p>Authenticates a user</p>
 
@@ -400,10 +410,8 @@
 <td style="text-align: left">Password</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h2 id='auth-register'>register</h2>
-<p><code>POST: /auth/register</code></p>
+<p><code>POST /auth/register</code></p>
 
 <p>Registers a new user</p>
 
@@ -430,10 +438,8 @@
 <td style="text-align: left">Password</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h2 id='auth-me'>me</h2>
-<p><code>GET: /auth/me</code></p>
+<p><code>GET /auth/me</code></p>
 
 <p>Get user details</p>
 
@@ -443,7 +449,7 @@
 <li>User must be logged in</li>
 </ul>
 
-<p><code>PUT: /auth/me</code></p>
+<p><code>PUT /auth/me</code></p>
 
 <p>Update user details</p>
 
@@ -471,10 +477,8 @@
 <td style="text-align: left">New password</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h2 id='auth-usernameavailable'>usernameAvailable</h2>
-<p><code>POST: /auth/usernameAvailable</code></p>
+<p><code>POST /auth/usernameAvailable</code></p>
 
 <p>Check if a username is available</p>
 
@@ -491,10 +495,8 @@
 <td style="text-align: left">Username to check</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h2 id='auth-nameavailable'>nameAvailable</h2>
-<p><code>POST: /auth/nameAvailable</code></p>
+<p><code>POST /auth/nameAvailable</code></p>
 
 <p>Check if a name is available</p>
 
@@ -511,12 +513,8 @@
 <td style="text-align: left">Name to check</td>
 </tr>
 </tbody></table>
-
-<hr>
-
-<hr>
 <h1 id='ctf'>ctf</h1><h2 id='ctf-category'>category</h2>
-<p><code>GET: /ctf/category</code></p>
+<p><code>GET /ctf/category</code></p>
 
 <p>Get categories</p>
 
@@ -526,7 +524,7 @@
 <li>User must be logged in</li>
 </ul>
 
-<p><code>POST: /ctf/category</code></p>
+<p><code>POST /ctf/category</code></p>
 
 <p>Create a category</p>
 
@@ -551,7 +549,7 @@
 </tr>
 </tbody></table>
 
-<p><code>DELETE: /ctf/category</code></p>
+<p><code>DELETE /ctf/category</code></p>
 
 <p>Delete a category</p>
 
@@ -562,7 +560,7 @@
 <li>User must be an admin</li>
 </ul>
 
-<p><code>PUT: /ctf/category</code></p>
+<p><code>PUT /ctf/category</code></p>
 
 <p>Rename a category</p>
 
@@ -591,10 +589,8 @@
 <td style="text-align: left">Category Name</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h2 id='ctf-question'>question</h2>
-<p><code>GET: /ctf/question</code></p>
+<p><code>GET /ctf/question</code></p>
 
 <p>Get questions</p>
 
@@ -604,7 +600,7 @@
 <li>User must be logged in</li>
 </ul>
 
-<p><code>POST: /ctf/question</code></p>
+<p><code>POST /ctf/question</code></p>
 
 <p>Create a question</p>
 
@@ -649,7 +645,7 @@
 </tr>
 </tbody></table>
 
-<p><code>PUT: /ctf/question</code></p>
+<p><code>PUT /ctf/question</code></p>
 
 <p>Update a question</p>
 
@@ -699,7 +695,7 @@
 </tr>
 </tbody></table>
 
-<p><code>DELETE: /ctf/question</code></p>
+<p><code>DELETE /ctf/question</code></p>
 
 <p>Delete a question</p>
 
@@ -710,7 +706,7 @@
 <li>User must be an admin</li>
 </ul>
 <h3 id='ctf-question-getflag'>getFlag</h3>
-<p><code>POST: /ctf/question/getFlag</code></p>
+<p><code>POST /ctf/question/getFlag</code></p>
 
 <p>Get a question flag</p>
 
@@ -734,10 +730,8 @@
 <td style="text-align: left">Question ID</td>
 </tr>
 </tbody></table>
-
-<hr>
 <h3 id='ctf-question-solve'>solve</h3>
-<p><code>POST: /ctf/question/solve</code></p>
+<p><code>POST /ctf/question/solve</code></p>
 
 <p>Solve a question</p>
 
@@ -766,7 +760,7 @@
 </tr>
 </tbody></table>
 
-<p><code>DELETE: /ctf/question/solve</code></p>
+<p><code>DELETE /ctf/question/solve</code></p>
 
 <p>Unsolve a question</p>
 
@@ -776,22 +770,16 @@
 <li>User must be logged in</li>
 <li>User must be an admin</li>
 </ul>
-
-<hr>
-
-<hr>
-
-<hr>
 <h1 id='stats'>stats</h1><h2 id='stats-scores'>scores</h2>
-<p><code>GET: /stats/scores</code></p>
+<p><code>GET /stats/scores</code></p>
 
 <p>Get all player scores</p>
 <h3 id='stats-scores-top'>top</h3>
-<p><code>GET: /stats/scores/top</code></p>
+<p><code>GET /stats/scores/top</code></p>
 
 <p>Get the top 10 players/teams</p>
 
-<p><code>GET: /stats/scores/top/:n</code></p>
+<p><code>GET /stats/scores/top/:n</code></p>
 
 <p>Get the top <code>n</code> players/teams</p>
 
@@ -808,18 +796,12 @@
 <td style="text-align: left">Number of players/teams</td>
 </tr>
 </tbody></table>
-
-<hr>
-
-<hr>
-
-<hr>
 <h2 id='stats-solves'>solves</h2>
-<p><code>GET: /stats/solves</code></p>
+<p><code>GET /stats/solves</code></p>
 
 <p>Get all question solves</p>
 
-<p><code>GET: /stats/solves/:id</code></p>
+<p><code>GET /stats/solves/:id</code></p>
 
 <p>Get players who have solved a specific question</p>
 
@@ -836,18 +818,10 @@
 <td style="text-align: left">Question ID</td>
 </tr>
 </tbody></table>
-
-<hr>
-
-<hr>
-
-<hr>
 <h1 id='hello'>hello</h1>
-<p><code>GET: /hello</code></p>
+<p><code>GET /hello</code></p>
 
 <p>Server health check</p>
-
-<hr>
 <h1 id='development'>Development</h1>
 <p>The server and official client for Project CTF² is available on GitHub at <a href="https://github.com/featherbear/CTF2">featherbear/CTF2</a></p>
 
