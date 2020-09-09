@@ -141,5 +141,26 @@ export default function (app, opts, done) {
     }
   )
 
+  app.delete(
+    '/',
+    {
+      preValidation: [app.authenticate],
+      schema: {
+        description: 'Delete a user',
+        body: {
+          type: 'object',
+          properties: {
+            username: { type: 'string', description: 'Username' }
+          }
+        }
+      }
+    },
+    async (req, res) => {
+      const { username } = req.body
+      await User.delete(username)
+      return res.OK()
+    }
+  )
+
   done()
 }
