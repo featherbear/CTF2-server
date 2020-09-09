@@ -150,10 +150,9 @@ export default function (app, opts, done) {
         if (flag === await question.getFlag()) {
           try {
             await question.solve(req.User.username)
-          } catch {
-            return res.FAIL('Question already solved')
+          } catch (e) {
+            return res.FAIL(e.message)
           }
-
           return res.OK()
         }
       } catch {
