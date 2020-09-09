@@ -2,7 +2,7 @@
 
 import { database } from '../../lib/db'
 
-const defaultN = 10;
+const defaultN = 10
 
 export default function (app, opts, done) {
   app.get('/',
@@ -33,7 +33,11 @@ export default function (app, opts, done) {
       }
     },
     async (req, res) => {
-      const n = Math.abs(parseInt(req.params.n)) || defaultN
+      const n = parseInt(req.params.n)
+      if (n < 0) {
+        return res.FAIL('>:( Hmph')
+      }
+
       return res.OK(database.getTopNScores(n))
     }
   )
