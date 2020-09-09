@@ -21,7 +21,7 @@ export default function (app, opts, done) {
 
   app.register(require('./auth'), { prefix: '/auth' })
   app.register(require('./ctf'), { prefix: '/ctf' })
-  app.register(require('./score'), { prefix: '/score' })
+  app.register(require('./stats'), { prefix: '/stats' })
 
   app.get('/', { hide: true }, (req, res) => {
     return CTF2_GAME_URL ? res.redirect(CTF2_GAME_URL) : 'Try harder'
