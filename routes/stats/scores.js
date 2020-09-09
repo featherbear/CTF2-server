@@ -29,7 +29,10 @@ export default function (app, opts, done) {
     '/top/:n',
     {
       schema: {
-        description: 'Get the top `n` players/teams'
+        description: 'Get the top `n` players/teams',
+        params: {
+          n: { type: 'integer', description: 'Number of players/teams' }
+        }
       }
     },
     async (req, res) => {

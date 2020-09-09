@@ -17,7 +17,7 @@ export default function (app, opts, done) {
     {
       schema: {
         description: 'Get players who have solved a specific question',
-        query: {
+        params: {
           id: { type: 'integer', description: 'Question ID' }
         }
       }
