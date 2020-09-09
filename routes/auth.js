@@ -144,7 +144,7 @@ export default function (app, opts, done) {
   app.delete(
     '/',
     {
-      preValidation: [app.authenticate],
+      preValidation: [app.authenticate, app.authorise],
       schema: {
         description: 'Delete a user',
         body: {
