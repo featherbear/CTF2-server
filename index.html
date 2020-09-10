@@ -328,6 +328,9 @@
                     <a href="#auth-nameavailable" class="toc-h2 toc-link" data-title="nameAvailable">nameAvailable</a>
                   </li>
                   <li>
+                    <a href="#auth-delete" class="toc-h2 toc-link" data-title="delete">delete</a>
+                  </li>
+                  <li>
                     <a href="#auth-all" class="toc-h2 toc-link" data-title="all">all</a>
                   </li>
               </ul>
@@ -380,18 +383,7 @@
 </ul>
 
 <hr>
-<h1 id='auth'>auth</h1>
-<p><code>DELETE /auth</code></p>
-
-<p>Delete a user</p>
-
-<p><strong>Requirements</strong></p>
-
-<ul>
-<li>User must be logged in</li>
-<li>User must be an admin</li>
-</ul>
-<h2 id='auth-login'>login</h2>
+<h1 id='auth'>auth</h1><h2 id='auth-login'>login</h2>
 <p><code>POST /auth/login</code></p>
 
 <p>Authenticates a user</p>
@@ -517,6 +509,31 @@
 <td style="text-align: left">Name to check</td>
 </tr>
 </tbody></table>
+<h2 id='auth-delete'>delete</h2>
+<p><code>POST /auth/delete</code></p>
+
+<p>Delete a user</p>
+
+<p><strong>Requirements</strong></p>
+
+<ul>
+<li>User must be logged in</li>
+<li>User must be an admin</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>username</strong></td>
+<td style="text-align: left"><code>string</code></td>
+<td style="text-align: left">Username</td>
+</tr>
+</tbody></table>
 <h2 id='auth-all'>all</h2>
 <p><code>GET /auth/all</code></p>
 
@@ -574,6 +591,20 @@
 <li>User must be logged in</li>
 <li>User must be an admin</li>
 </ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Category ID</td>
+</tr>
+</tbody></table>
 
 <p><code>PUT /ctf/category</code></p>
 
@@ -720,6 +751,20 @@
 <li>User must be logged in</li>
 <li>User must be an admin</li>
 </ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>id</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Question ID</td>
+</tr>
+</tbody></table>
 <h3 id='ctf-question-getflag'>getFlag</h3>
 <p><code>POST /ctf/question/getFlag</code></p>
 
@@ -785,6 +830,25 @@
 <li>User must be logged in</li>
 <li>User must be an admin</li>
 </ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>questionId</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">Question ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>userId</strong></td>
+<td style="text-align: left"><code>integer</code></td>
+<td style="text-align: left">User ID</td>
+</tr>
+</tbody></table>
 <h1 id='stats'>stats</h1><h2 id='stats-scores'>scores</h2>
 <p><code>GET /stats/scores</code></p>
 
