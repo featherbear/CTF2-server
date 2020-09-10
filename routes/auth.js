@@ -137,8 +137,8 @@ export default function (app, opts, done) {
     }
   )
 
-  app.delete(
-    '/',
+  app.post(
+    '/delete',
     {
       preValidation: [app.authenticate, app.authorise],
       schema: {
