@@ -114,13 +114,13 @@ export default function (app, opts, done) {
       if (!username) {
         return res.FAIL('No username supplied')
       }
-      return res.OK(await User.usernameAvailable(username))
+      return res.OK(await User.usernameAvailable(username.trim()))
     }
   )
 
   app.post(
-    '/nameAvailable',
-    {
+    '/nameAvailable', 
+    { 
       schema: {
         description: 'Check if a name is available',
         body: {
@@ -133,7 +133,7 @@ export default function (app, opts, done) {
       if (!name) {
         return res.FAIL('No name supplied')
       }
-      return res.OK(await User.nameAvailable(name))
+      return res.OK(await User.nameAvailable(name.trim()))
     }
   )
 
