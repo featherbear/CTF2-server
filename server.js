@@ -35,7 +35,7 @@ app.register(fastifyHelmet)
 app.register(require('./routes'))
 
 const { PORT, HOST } = process.env
-app.listen(PORT || 8000, HOST || '0.0.0.0').then(function (a) {
+app.listen(PORT || 8000, HOST || '0.0.0.0').then(function () {
   global.CTF2_START_TIME = new Date()
   const { address: HOST, port: PORT } = app.server.address()
   console.info(`Project CTF² server listening on ${HOST}:${PORT}`)
