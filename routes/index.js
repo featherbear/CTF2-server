@@ -38,7 +38,7 @@ export default function (app, opts, done) {
       const data = {
         /* Server alive check */
         hello: 'world!',
-
+        START_TIME: global.CTF2_START_TIME.getTime(),
         GAME_URL: CTF2_GAME_URL
       }
 
