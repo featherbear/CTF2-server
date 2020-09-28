@@ -39,6 +39,7 @@ export default function (app, opts, done) {
         /* Server alive check */
         hello: 'world!',
         START_TIME: global.CTF2_START_TIME.getTime(),
+        GIT_COMMIT: global.GIT_COMMIT || undefined,
         GAME_URL: CTF2_GAME_URL
       }
 

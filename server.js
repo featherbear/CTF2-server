@@ -5,6 +5,9 @@ import { init as initDatabase } from './lib/db'
 
 require('dotenv').config()
 
+import getGitInfo from 'git-info'
+global.GIT_COMMIT = getGitInfo.getShaDirty()
+
 const app = fastify()
 app.register(fastifyHelmet)
 
